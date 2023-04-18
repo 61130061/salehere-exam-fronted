@@ -7,11 +7,54 @@ html,
 body,
 #root {
   height: 100%;
+  // background-color: red;
+  background-image: linear-gradient(#c41417, black);
+  font-size: 34px;
+}
+
+h1 {
+  font-size: 37px;
+  color: #383838;
+  margin-top: 50px;
+}
+
+input {
+  height: 60px;
+  color: #4e4e4e;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  font-size: 34px;
+  text-align: center;
+}
+
+button {
+  all: unset;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 10px 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+button.normal {
+  background-image: radial-gradient(ellipse farthest-corner at top left, #c41417 0%, #b31315 100%);
+  border-radius: 10px;
+}
+
+button.text {
+  color: #6f6f6f;
+
+  &:hover {
+    color: #c41417
+  }
 }
 
 .app {
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -21,5 +64,5 @@ body,
   height: 90vh;
   background-color: white;
   border-radius: 20px;
-  margin-top: 40px;
+  margin-top: 10px;
 }
