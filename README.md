@@ -1,45 +1,33 @@
 # Proxumer - Frontend Developer Interview Question
 
+> Submited by Warunyu Hematulin
+
 Objective: A web-based, GraphQL-powered chat client
 
-## Demo video
+## Cover Letter
 
-See the demo video in `screenshots/`
+Thank you SALEHERE for considering my application and send me this test.
+The test is very fun.
+I have learned a lot of things from this test.
 
-## CSS Format Requirement
 
-Font Family Prompt
+## Start Guilde
 
-##### Container White
+> This website will only works with specific backend server from another repository that I made. (If you following structure below, you should be fine)
 
-    background color #ffffff
-    radius 20px
-    height 90vh
+1. Clone and run backend server from [this](https://github.com/61130061/salehere-exam-backend.git) repository with shell command below.
 
-##### Title
+> backend have to run on PORT 4000 only and don't need docker to run it
 
-    font size 37px
-    color #383838
+```sh
+npm install
 
-##### Button
+npm run dev
+```
 
-    color #ffffff
-    background image radial-gradient(ellipse farthest-corner at top left, #c41417 0%, #b31315 100%)
+2. Run this web application by using Docker. (Docker should install package and walk you through install & build process)
 
-##### Text Button
 
-    color #6f6f6f
-    hover color #c41417
-
-##### Input
-
-    height 60px
-    color #4e4e4e
-    border 3px solid lightgray
-    radius 10px
-    font size 34px
-
-## Evaluation
-
-- You must strictly adhere to the above CSS format requirement
-- Your solution must function in the exact same way as shown in the given demo video
+## Stack
+- React from initial assignment
+- react-router-dom: for route
