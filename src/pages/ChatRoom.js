@@ -13,6 +13,7 @@ export default function ChatRoom ({ user }) {
   const mcRef = useRef(null);
 
   useEffect(() => {
+    // TODO: Fix failed: WebSocket is closed before the connection is established.
     const socket = io('http://localhost:4000/');
 
     if (data) {
@@ -25,7 +26,7 @@ export default function ChatRoom ({ user }) {
     return () => {
       socket.disconnect();
     };
-  }, [data, mcRef])
+  }, [data])
 
   useEffect(() => {
     if (!user) navigate('/');
@@ -122,7 +123,7 @@ export default function ChatRoom ({ user }) {
       {data &&
         <>
           <div>
-            <h1 style={{ marginTop: '0px', marginBottom: '0px' }}>Chatroom: {data.name}</h1>
+            <h1 style={{ marginTop: '0px', marginBottom: '0px' }}>ห้อง {data.name}</h1>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', height: '95%' }}>
             <div ref={mcRef} className="message-container">

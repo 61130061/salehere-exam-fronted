@@ -11,7 +11,7 @@ The test is very fun.
 I have learned a lot of things from this test.
 
 
-## Start Guilde
+## Start Guide
 
 > This website will only works with specific backend server from another repository that I made. (If you following structure below, you should be fine)
 

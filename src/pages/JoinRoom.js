@@ -44,12 +44,12 @@ export default function JoinRoom ({ user }) {
   return (
     <>
       <div style={{ textAlign: 'center' }}>
-        <h1>Join Rooom</h1>
-        <input value={roomName} onChange={(e) => setRoomName(e.target.value)} type="text" placeholder="Room's Name" />
+        <h1>เข้าร่วมแชท</h1>
+        <input value={roomName} onChange={(e) => setRoomName(e.target.value)} type="text" placeholder="ชื่อห้อง" />
       </div>
-      <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
-        <button onClick={() => navigate('../room')} className="text-button">Back</button>
-        <button onClick={onJoinRoom} className="normal">Join</button>
+      <div className="fade-in" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
+        <button onClick={() => navigate('../room')} className="text-button">กลับ</button>
+        <button onClick={onJoinRoom} className="normal">เข้าร่วม</button>
       </div>
     </>
   )

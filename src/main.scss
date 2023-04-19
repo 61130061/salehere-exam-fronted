@@ -21,6 +21,7 @@ h1 {
 }
 
 input {
+  font-family: "Prompt", sans-serif;
   height: 60px;
   color: #4e4e4e;
   border: 3px solid lightgray;
@@ -37,13 +38,12 @@ button {
   color: #ffffff;
   font-size: 24px;
   padding: 10px 30px;
-  opacity: 0;
-  transform: translateY(30%);
-  animation: fade-in-bt 0.4s ease-in-out forwards;
+  animation: all 0.5s ease-in-out forwards;
+}
 
-  &:hover {
-    cursor: pointer;
-  }
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 button.normal {
@@ -56,6 +56,12 @@ button.text-button {
   &:hover {
     color: #c41417
   }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30%);
+  animation: fade-in-bt 0.4s ease-in-out forwards;
 }
 
 .credit {
@@ -90,7 +96,7 @@ button.text-button {
   border-radius: 10px;
   flex: 1 1 0%;
   opacity: 0;
-  transform: translateX(2%);
+  transform: translateX(1%);
   animation: fade-in-lr 0.4s ease-in-out forwards;
 }
 
@@ -149,10 +155,11 @@ input.message {
   }
 }
 
+
 @keyframes fade-in-lr {
   0% {
     opacity: 0;
-    transform: translateX(2%);
+    transform: translateX(1%);
   }
   100% {
     opacity: 1;

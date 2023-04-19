@@ -49,12 +49,12 @@ export default function CreateRoom ({ user }) {
   return (
     <>
       <div style={{ textAlign: 'center' }}>
-        <h1>Create Rooom</h1>
+        <h1>สร้างห้องใหม่</h1>
         <input value={roomName} onChange={(e) => setRoomName(e.target.value)} type="text" placeholder="Room's Name" />
       </div>
-      <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
-        <button onClick={() => navigate('../room')} className="text-button">Back</button>
-        <button onClick={onCreateRoom} className="normal">Create</button>
+      <div className="fade-in" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
+        <button onClick={() => navigate('../room')} className="text-button">กลับ</button>
+        <button onClick={onCreateRoom} className="normal">ยืนยัน</button>
       </div>
     </>
   )
