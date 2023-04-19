@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import io from 'socket.io-client';
 
 import Message from '../components/Message';
 import MyMessage from '../components/MyMessage';
@@ -9,6 +10,14 @@ export default function ChatRoom ({ user }) {
   const [text, setText] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
+
+  useEffect(() => {
+    const socket = io('http://localhost:4000/');
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [])
 
   useEffect(() => {
     if (!user) navigate('/');
