@@ -14,10 +14,17 @@ export default function ChatRoom ({ user }) {
   useEffect(() => {
     const socket = io('http://localhost:4000/');
 
+    if (data) {
+      socket.on('chatroom-' + data.id, (message) => {
+        console.log(message);
+        onFetchData();
+      })
+    }
+
     return () => {
       socket.disconnect();
     };
-  }, [])
+  }, [data])
 
   useEffect(() => {
     if (!user) navigate('/');

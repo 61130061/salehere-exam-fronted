@@ -31,3 +31,4 @@ npm run dev
 ## Stack
 - React from initial assignment
 - react-router-dom: for route
+- socket.io: real-time chatroom fetching
