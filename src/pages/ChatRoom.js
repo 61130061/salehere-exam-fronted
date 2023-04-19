@@ -6,6 +6,7 @@ import MyMessage from '../components/MyMessage';
 
 export default function ChatRoom ({ user }) {
   const [data, setData] = useState(null);
+  const [text, setText] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -13,11 +14,6 @@ export default function ChatRoom ({ user }) {
     if (!user) navigate('/');
     else onFetchData();
   }, [id, user, navigate])
-
-  const mockMessage = [
-    { text: 'hello', sender: 'me' },
-    { text: 'hi', sender: 'test' }
-  ]
 
   const onFetchData = () => {
     if (!id) throw Error ('Missing input')
@@ -29,6 +25,10 @@ export default function ChatRoom ({ user }) {
           name
           messages {
             id
+            sender {
+              id
+              name
+            }
             text
           }
         }
@@ -51,13 +51,51 @@ export default function ChatRoom ({ user }) {
       .then(r => r.json())
       .then(data => {
         if (data.data) {
-          console.log(data.data);
           setData(data.data.chatRoomById)
         } else {
           // TODO: Show message room already created or goto this room
         }
       })
+  }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && e.target.value !== '') {
+      const payload = {
+        roomId: data.id,
+        senderId: user.id,
+        text
+      }
+
+      const mutation = `
+        mutation SendMessage($roomId: ID!, $senderId: ID!, $text: String!) {
+          sendMessage (roomId: $roomId, senderId: $senderId, text: $text) {
+            id
+            text
+          }
+        }
+      `;
+
+      fetch("http://localhost:4000/graphql", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          query: mutation,
+          variables: payload,
+        })
+      })
+        .then(r => r.json())
+        .then(data => {
+          if (data.data) {
+            setText('')
+            onFetchData();
+          } else {
+            // TODO: Show message room already created or goto this room
+          }
+        })
+    }
   }
 
   return (
@@ -69,12 +107,16 @@ export default function ChatRoom ({ user }) {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', height: '95%' }}>
             <div className="message-container">
-              {mockMessage.map((d, i) =>
+              {data.messages.length > 0 ? data.messages.map((d, i) =>
+                d.sender.id === user.id ?
+                <MyMessage key={i} data={d} />:
                 <Message key={i} data={d} />
-              )}
+            ) :
+              <div className="no-message">No message on this chatroom.</div>
+            }
             </div>
             <div style={{ position: 'relative' }}>
-              <input className="message" type="text" />
+              <input value={text} onKeyDown={handleKeyDown} onChange={(e) => setText(e.target.value)} className="message" type="text" />
               <div className="send-tip">Press Enter to send</div>
             </div>
           </div>
