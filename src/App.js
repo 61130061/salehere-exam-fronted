@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
+import backgroundImg from "./assets/images/bg.jpg";
+import logoImg from "./assets/images/logo.png";
+
 import Room from './pages/Room';
 import CreateRoom from './pages/CreateRoom';
 import JoinRoom from './pages/JoinRoom';
@@ -10,8 +13,10 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   return (
-    <div className="app">
-      <div style={{ backgroundColor: '#ffffff' }}>Proxumer</div>
+    <div className="app" style={{ backgroundImage: `url(${backgroundImg})` }}>
+      <div style={{ marginBottom: '15px'}}>
+        <img src={logoImg} height="40px" />
+      </div>
       <div className="container">
         <BrowserRouter>
           <Routes>
@@ -24,6 +29,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </div>
+      <div className="credit">Submitted by Warunyu Hematulin <a href="https://github.com/61130061/salehere-exam-fronted.git" target="_blank">GitHub</a></div>
     </div>
   )
 };

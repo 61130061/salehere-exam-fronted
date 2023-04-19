@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 
@@ -10,6 +10,7 @@ export default function ChatRoom ({ user }) {
   const [text, setText] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
+  const mcRef = useRef(null);
 
   useEffect(() => {
     const socket = io('http://localhost:4000/');
@@ -24,7 +25,7 @@ export default function ChatRoom ({ user }) {
     return () => {
       socket.disconnect();
     };
-  }, [data])
+  }, [data, mcRef])
 
   useEffect(() => {
     if (!user) navigate('/');
@@ -68,6 +69,8 @@ export default function ChatRoom ({ user }) {
       .then(data => {
         if (data.data) {
           setData(data.data.chatRoomById)
+          const container = mcRef.current;
+          container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
         } else {
           // TODO: Show message room already created or goto this room
         }
@@ -122,7 +125,7 @@ export default function ChatRoom ({ user }) {
             <h1 style={{ marginTop: '0px', marginBottom: '0px' }}>Chatroom: {data.name}</h1>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', height: '95%' }}>
-            <div className="message-container">
+            <div ref={mcRef} className="message-container">
               {data.messages.length > 0 ? data.messages.map((d, i) =>
                 d.sender.id === user.id ?
                 <MyMessage key={i} data={d} />:
