@@ -134,7 +134,7 @@ export default function ChatRoom ({ user }) {
             </div>
             <div style={{ position: 'relative' }}>
               <input value={text} onKeyDown={handleKeyDown} onChange={(e) => setText(e.target.value)} className="message" type="text" />
-              <div className="send-tip">Press Enter to send</div>
+              <div className="send-tip">Enter เพื่องส่ง</div>
             </div>
           </div>
         </>

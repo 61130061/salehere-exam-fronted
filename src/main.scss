@@ -144,6 +144,13 @@ input.message {
   margin-top: 10px;
 }
 
+.status {
+  font-size: 14px;
+  color: red;
+  text-align: center;
+  margin-top: 5px;
+}
+
 @keyframes fade-in-bt {
   0% {
     opacity: 0;

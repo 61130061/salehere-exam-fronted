@@ -11,6 +11,16 @@ The test is very fun.
 I have learned a lot of things from this test.
 
 
+## Feature
+- [x] Route protection (not enter name reroute to home page)
+- [x] Real-time chat update
+- [x] Styling following requirement + animation
+- [x] show error message when chatroom not found or already existed
+incoming...
+- [ ] using real database for production (currently use server memory for prototype)
+- [ ] Authorization system for user
+
+
 ## Start Guide
 
 > This website will only works with specific backend server from another repository that I made. (If you following structure below, you should be fine)

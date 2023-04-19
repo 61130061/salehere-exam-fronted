@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CreateRoom ({ user }) {
   const [roomName, setRoomName] = useState('');
+  const [status, setStatus] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,9 +40,10 @@ export default function CreateRoom ({ user }) {
       .then(r => r.json())
       .then(data => {
         if (data.data) {
+          setStatus(null);
           navigate('/room/id/'+data.data.createChatRoom.id);
         } else {
-          // TODO: Show message room already created or goto this room
+          setStatus(data.errors[0].message);
         }
       })
   }
@@ -51,6 +53,9 @@ export default function CreateRoom ({ user }) {
       <div style={{ textAlign: 'center' }}>
         <h1>สร้างห้องใหม่</h1>
         <input value={roomName} onChange={(e) => setRoomName(e.target.value)} type="text" placeholder="Room's Name" />
+        {status &&
+          <div className="status">{status}</div>
+        }
       </div>
       <div className="fade-in" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
         <button onClick={() => navigate('../room')} className="text-button">กลับ</button>
