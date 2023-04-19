@@ -13,20 +13,17 @@ export default function ChatRoom ({ user }) {
   const mcRef = useRef(null);
 
   useEffect(() => {
-    // TODO: Fix failed: WebSocket is closed before the connection is established.
     const socket = io('http://localhost:4000/');
 
-    if (data) {
-      socket.on('chatroom-' + data.id, (message) => {
-        console.log(message);
-        onFetchData();
-      })
-    }
+    socket.on('chatroom-' + id, (message) => {
+      console.log(message);
+      onFetchData();
+    })
 
     return () => {
       socket.disconnect();
     };
-  }, [data])
+  }, [])
 
   useEffect(() => {
     if (!user) navigate('/');
