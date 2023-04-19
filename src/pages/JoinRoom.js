@@ -11,7 +11,7 @@ export default function JoinRoom ({ user }) {
   }, [user, navigate])
 
   const onJoinRoom = () => {
-    const mutation = `
+    const query = `
       query ChatRoom($name: String!) {
         chatRoomByName(name: $name) {
           id
@@ -26,7 +26,7 @@ export default function JoinRoom ({ user }) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        query: mutation,
+        query: query,
         variables: {
           name: roomName
         },

@@ -33,7 +33,7 @@ export default function ChatRoom ({ user }) {
   const onFetchData = () => {
     if (!id) throw Error ('Missing input')
 
-    const mutation = `
+    const query = `
       query GetChatRoom($id: ID!) {
         chatRoomById (id: $id) {
           id
@@ -57,7 +57,7 @@ export default function ChatRoom ({ user }) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        query: mutation,
+        query: query,
         variables: {
           id
         },
