@@ -7,7 +7,6 @@ html,
 body,
 #root {
   height: 100%;
-  // background-color: red;
   background-image: linear-gradient(#c41417, black);
   font-size: 34px;
 }
@@ -30,7 +29,7 @@ input {
 button {
   all: unset;
   color: #ffffff;
-  font-size: 30px;
+  font-size: 24px;
   padding: 10px 30px;
 
   &:hover {
@@ -65,4 +64,51 @@ button.text {
   background-color: white;
   border-radius: 20px;
   margin-top: 10px;
+  position: relative;
+}
+
+.message-container {
+  overflow-y: scroll;
+  background-color: #F7F7F7;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  flex: 1 1 0%;
+}
+
+.text {
+  background-color: #ECECEC;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.my-text {
+  background-color: #ECECEC;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.my-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 20px;
+}
+
+input.message {
+  width: 100%;
+  text-align: start;
+  position: relative;
+}
+
+.send-tip {
+  font-size: 14px;
+  background-color: white;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 }

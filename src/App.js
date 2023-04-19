@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 import Room from './pages/Room';
 import CreateRoom from './pages/CreateRoom';
 import JoinRoom from './pages/JoinRoom';
+import ChatRoom from './pages/ChatRoom';
 
 const App = () => {
   const [step, setStep] = useState(0);
@@ -19,6 +20,8 @@ const App = () => {
             <Route path="room" element={<Room name={name} />} />
             <Route path="room/create" element={<CreateRoom name={name} />} />
             <Route path="room/join" element={<JoinRoom name={name} />} />
+            <Route path="room/id/:id" element={<ChatRoom />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </div>
