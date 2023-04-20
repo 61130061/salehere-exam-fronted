@@ -11,11 +11,11 @@ export default function Room ({ user }) {
   return (
     <>
       <div style={{ textAlign: 'center', marginBottom: '100px' }}>
-        <h1>คุณ {user?.name}</h1>
+        <h1 aria-label="user-name">คุณ {user?.name}</h1>
       </div>
       <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '30px', gap: '20px' }}>
-        <button onClick={() => navigate('/room/create')} className="normal">สร้างห้องใหม่</button>
-        <button onClick={() => navigate('/room/join')} className="text-button">เข้าร่วมแชท</button>
+        <button aria-label="create-button" onClick={() => navigate('/room/create')} className="normal">สร้างห้องใหม่</button>
+        <button aria-label="join-button" onClick={() => navigate('/room/join')} className="text-button">เข้าร่วมแชท</button>
       </div>
     </>
   )

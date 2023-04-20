@@ -76,11 +76,11 @@ const Home = ({ setUser }) => {
     <>
       <div style={{ textAlign: 'center' }}>
         <h1>ชื่อของคุณ</h1>
-        <input value={name} onChange={(e) => setName(e.target.value)} type="text" />
+        <input role="textbox" value={name} onChange={(e) => setName(e.target.value)} type="text" />
       </div>
       {name && name !== '' &&
         <div className="fade-in" style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-          <button onClick={onConfirm} className="normal">ยืนยัน</button>
+          <button role="button" onClick={onConfirm} className="normal">ยืนยัน</button>
         </div>
       }
     </>
